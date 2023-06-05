@@ -1,7 +1,7 @@
-function Ship(length, owner) {
+function Ship(length) {
     return {
+        name: 'smallShip',
         length,
-        owner,
         damage: 0,
         sunk: false,
         hit() {

@@ -1,23 +1,27 @@
-function ship(length, owner) {
+function Gameboard() {
+
     return {
-        length,
-        owner,
-        damage: 0,
-        sunk: false,
-        hit() {
-            if(this.isSunk() == true ) {
-               return 'Unable to attack sunken ship'
-            } else {
-                this.damage += 1
+        coordinateList: [],
+        createCoordinates() {
+            for (let i = 0; i < 100; i++) {
+              this.coordinateList.push(0)
             }
         },
-        isSunk() {
-            if(this.damage == length){
-                return this.sunk = true
-            }
-        }
-        
+        placeShip(ship, x, y) {
+            if(y == 0){
+                this.coordinateList[x] = ship
+
+            } else {
+                let coordmath = y*10+x
+                this.coordinateList[coordmath] = ship
+                console.log(coordmath)
+
+            }},
+// It will have the ability to reserve a set of coordinates for a ship
+// it needs to ensure that coordinates for ships don't overlap.
+// Gameboard should be 10 x 10
+// maybe divide it into object rows? so for example..
     }
 }
 
-module.exports = ship
+module.exports = Gameboard
