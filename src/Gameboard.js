@@ -9,10 +9,18 @@ function Gameboard() {
         },
         placeShip(ship, x, y) {
             for (let i = 0; i < ship.length; i++) {
-                let coordmath = y*10+x
+                const coordmath = y*10+x
                 this.coordinateList[coordmath+i] = ship
             }
-            }}
+            },
+        receiveAttack(x,y){
+            const coordmath = y*10+x
+            if (this.coordinateList[coordmath] == 0) {
+                this.coordinateList[coordmath] = 'Miss'
+            } 
+        }
+        
+        }
 // It will have the ability to reserve a set of coordinates for a ship
 // it needs to ensure that coordinates for ships don't overlap.
 // Gameboard should be 10 x 10

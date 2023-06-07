@@ -101,5 +101,22 @@ test('Gameboard places ship until length is 0 pt. 2', ()=> {
     expect(playerGameBoard.coordinateList[29]).toBe(smallShip);
     expect(playerGameBoard.coordinateList[30]).toBe(smallShip); 
     expect(playerGameBoard.coordinateList[31]).toBe(smallShip); 
-  
 } )
+
+test('receive an attack at empty coordinates records missed shot', () => {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(3);
+    playerGameBoard.placeShip(smallShip, 0, 0);
+    playerGameBoard.receiveAttack(0,1);
+    expect(playerGameBoard.coordinateList[10]).toBe('Miss')
+})
+test('receive an attack at empty coordinates records hit shot', () => {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(3);
+    playerGameBoard.placeShip(smallShip, 0, 0);
+    playerGameBoard.receiveAttack(0,1);
+    expect(playerGameBoard.coordinateList[10]).toBe([smallShip, 'Hit'])
+    expect(smallShip.damage).toBe(1)
+})
