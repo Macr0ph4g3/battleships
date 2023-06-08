@@ -50,7 +50,7 @@ const smallShip = ship(3);
 
 playerGameBoard.placeShip(smallShip, 0, 0);
 
-expect(playerGameBoard.coordinateList[0]).toBe(smallShip);
+expect(playerGameBoard.coordinateList[0]).toStrictEqual([smallShip]);
 })
 
 test('Gameboard placing ship at 9,0', ()=>{
@@ -59,7 +59,7 @@ test('Gameboard placing ship at 9,0', ()=>{
     const smallShip = ship(3);
     
     playerGameBoard.placeShip(smallShip, 9, 0);
-expect(playerGameBoard.coordinateList[9]).toBe(smallShip);
+expect(playerGameBoard.coordinateList[9]).toStrictEqual([smallShip]);
 })
 test('Gameboard placing ship at 0,1', ()=>{
     const playerGameBoard = Gameboard();
@@ -67,8 +67,7 @@ test('Gameboard placing ship at 0,1', ()=>{
     const smallShip = ship(3)
     
     playerGameBoard.placeShip(smallShip, 0,1)
-    console.log(playerGameBoard.coordinateList)
-expect(playerGameBoard.coordinateList[10]).toBe(smallShip)
+expect(playerGameBoard.coordinateList[10]).toStrictEqual([smallShip])
 })
 test('Gameboard placing ship at 5,5', ()=>{
     const playerGameBoard = Gameboard();
@@ -76,8 +75,7 @@ test('Gameboard placing ship at 5,5', ()=>{
     const smallShip = ship(3);
     
     playerGameBoard.placeShip(smallShip, 5,5);
-    console.log(playerGameBoard.coordinateList);
-expect(playerGameBoard.coordinateList[55]).toBe(smallShip);
+expect(playerGameBoard.coordinateList[55]).toStrictEqual([smallShip]);
 })
 
 test('Gameboard places ship until length is 0', ()=> {
@@ -86,9 +84,9 @@ test('Gameboard places ship until length is 0', ()=> {
     const smallShip = ship(3);
     
     playerGameBoard.placeShip(smallShip, 9, 0);
-    expect(playerGameBoard.coordinateList[9]).toBe(smallShip);
-    expect(playerGameBoard.coordinateList[10]).toBe(smallShip); 
-    expect(playerGameBoard.coordinateList[11]).toBe(smallShip); 
+    expect(playerGameBoard.coordinateList[9]).toStrictEqual([smallShip]);
+    expect(playerGameBoard.coordinateList[10]).toStrictEqual([smallShip]); 
+    expect(playerGameBoard.coordinateList[11]).toStrictEqual([smallShip]); 
   
 } )
 
@@ -98,9 +96,9 @@ test('Gameboard places ship until length is 0 pt. 2', ()=> {
     const smallShip = ship(3);
     
     playerGameBoard.placeShip(smallShip, 9, 2);
-    expect(playerGameBoard.coordinateList[29]).toBe(smallShip);
-    expect(playerGameBoard.coordinateList[30]).toBe(smallShip); 
-    expect(playerGameBoard.coordinateList[31]).toBe(smallShip); 
+    expect(playerGameBoard.coordinateList[29]).toStrictEqual([smallShip]);
+    expect(playerGameBoard.coordinateList[30]).toStrictEqual([smallShip]); 
+    expect(playerGameBoard.coordinateList[31]).toStrictEqual([smallShip]); 
 } )
 
 test('receive an attack at empty coordinates records missed shot', () => {
@@ -111,12 +109,22 @@ test('receive an attack at empty coordinates records missed shot', () => {
     playerGameBoard.receiveAttack(0,1);
     expect(playerGameBoard.coordinateList[10]).toBe('Miss')
 })
-test('receive an attack at empty coordinates records hit shot', () => {
+test('receive an attack at coordinates with ship records hit', () => {
     const playerGameBoard = Gameboard();
     playerGameBoard.createCoordinates();
     const smallShip = ship(3);
-    playerGameBoard.placeShip(smallShip, 0, 0);
+    playerGameBoard.placeShip(smallShip, 0, 1);
     playerGameBoard.receiveAttack(0,1);
-    expect(playerGameBoard.coordinateList[10]).toBe([smallShip, 'Hit'])
     expect(smallShip.damage).toBe(1)
+    expect(playerGameBoard.coordinateList[10][1]).toBe('Hit')
+})
+test('receive an attack at coordinates and sink ship', () => {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(1);
+    playerGameBoard.placeShip(smallShip, 0, 1);
+    playerGameBoard.receiveAttack(0,1);
+    expect(smallShip.damage).toBe(1)
+    expect(smallShip.sunk).toBe(true)
+    expect(playerGameBoard.coordinateList[10][1]).toBe('Hit')
 })

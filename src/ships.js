@@ -9,6 +9,7 @@ function Ship(length) {
                return 'Unable to attack sunken ship'
             } else {
                 this.damage += 1
+                this.isSunk()
             }
         },
         isSunk() {
