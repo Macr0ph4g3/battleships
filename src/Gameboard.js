@@ -23,12 +23,22 @@ function Gameboard() {
     }   else if (coordList[0].sunk == false) {
             coordList.push('Hit')
             coordList[0].hit()
+            return this.loseCondition(this.shipList)
             }
         else{return false}
         },
-        recordHit(location){
-            
+        loseCondition(array){
+            let sunkenShips = 0
+            for (let I = 0; I < array.length; I++) {
+                if (array[I].sunk) {
+                    sunkenShips + 1
+                }
+            }
+             if (sunkenShips = array.length) {
+                return 'Game Over'
+             }
+            }
         }
-    }}
+    }
 
 module.exports = Gameboard

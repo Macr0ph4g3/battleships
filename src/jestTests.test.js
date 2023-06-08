@@ -161,6 +161,21 @@ test('gameboard accurately reports total ships (2)', ()=> {
     expect(playerGameBoard.shipList[0]).toStrictEqual(smallShip)
     expect(playerGameBoard.shipList[1]).toStrictEqual(medumShip)
 })
+test('gameBoard returns game over if all ships on gameboard are sunken', () => {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(1);
+    playerGameBoard.placeShip(smallShip, 0, 1);
+    const result = playerGameBoard.receiveAttack(0,1);
+
+    expect(result).toBe('Game Over')
+
+})
+
+
+
+
+
 // test('receive an out-of-bounds attack', () => {
 //     const playerGameBoard = Gameboard();
 //     playerGameBoard.createCoordinates();
