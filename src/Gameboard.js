@@ -7,29 +7,28 @@ function Gameboard() {
               this.coordinateList.push(0)
             }
         },
+        shipList: [],
         placeShip(ship, x, y) {
             for (let i = 0; i < ship.length; i++) {
-                const coordmath = y*10+x
-                this.coordinateList[coordmath+i] = [ship]
+                const coordMath = y*10+x
+                this.coordinateList[coordMath+i] = [ship]
                 this.shipList.push(ship)
             }
             },
         receiveAttack(x,y){
-            const coordmath = y*10+x
-            if (this.coordinateList[coordmath] == 0) {
-                this.coordinateList[coordmath] = 'Miss'
-            } else {
-                this.coordinateList[coordmath].push('Hit')
-                this.coordinateList[coordmath][0].hit()
+            const coordMath = y*10+x
+            let coordList = this.coordinateList[coordMath];
+            if (coordList == 0) {
+                this.coordinateList[coordMath] = 'Miss'
+    }   else if (coordList[0].sunk == false) {
+            coordList.push('Hit')
+            coordList[0].hit()
             }
+        else{return false}
         },
-        shipList: []        
+        recordHit(location){
+            
         }
-// It will have the ability to reserve a set of coordinates for a ship
-// it needs to ensure that coordinates for ships don't overlap.
-// Gameboard should be 10 x 10
-// maybe divide it into object rows? so for example..
-    
-}
+    }}
 
 module.exports = Gameboard

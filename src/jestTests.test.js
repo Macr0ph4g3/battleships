@@ -42,7 +42,11 @@ const playerGameBoard = Gameboard();
 playerGameBoard.createCoordinates();
 expect(playerGameBoard.coordinateList.length).toBe(100);
 })
-
+test('Gameboard has exactly 100 coordinates', () => {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    expect(playerGameBoard.coordinateList.length).toBe(100)
+})
 test('GameBoard placing ship at 0,0', () => {
 const playerGameBoard = Gameboard();
 playerGameBoard.createCoordinates();
@@ -128,3 +132,44 @@ test('receive an attack at coordinates and sink ship', () => {
     expect(smallShip.sunk).toBe(true)
     expect(playerGameBoard.coordinateList[10][1]).toBe('Hit')
 })
+test('receive an attack at already hit coordinates returns error', () => {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(1);
+    playerGameBoard.placeShip(smallShip, 0, 1);
+    playerGameBoard.receiveAttack(0,1)
+   const result = playerGameBoard.receiveAttack(0,1);
+
+    expect(result).toBe(false)
+})
+test('gameboard accurately reports total ships (1)', ()=> {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(1);
+    playerGameBoard.placeShip(smallShip, 0, 1);
+    expect(playerGameBoard.shipList).toStrictEqual([smallShip])
+})
+test('gameboard accurately reports total ships (2)', ()=> {
+    const playerGameBoard = Gameboard();
+    playerGameBoard.createCoordinates();
+    const smallShip = ship(1);
+    const medumShip = ship(2);
+
+    playerGameBoard.placeShip(smallShip, 0, 1);
+    playerGameBoard.placeShip(medumShip, 0, 2);
+
+    expect(playerGameBoard.shipList[0]).toStrictEqual(smallShip)
+    expect(playerGameBoard.shipList[1]).toStrictEqual(medumShip)
+})
+// test('receive an out-of-bounds attack', () => {
+//     const playerGameBoard = Gameboard();
+//     playerGameBoard.createCoordinates();
+//     const smallShip = ship(1);
+//     playerGameBoard.placeShip(smallShip, 0, 1);
+//     const result = playerGameBoard.receiveAttack(0,50);
+//     expect(result).toBe(false);
+// })
+// This isn't really necessary because user will end up clicking on the board
+// and so they can't technically go out of bounds unless they're working
+// in the console and forcing coordinates which I would just hide the 
+// function from the end user. 
