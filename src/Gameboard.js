@@ -27,7 +27,6 @@ function Gameboard() {
     }   else if (coordList[0].sunk == false) {
             coordList.push('Hit')
             coordList[0].hit()
-            console.log(this.shipList)
             return this.loseCondition(this.shipList)
             }
         else{return false}
@@ -40,8 +39,6 @@ function Gameboard() {
                 }
             }
              if (sunkenShips == array.length) {
-                console.log(array.length)
-                console.log(sunkenShips)
                 return true
              } else {
                 return false

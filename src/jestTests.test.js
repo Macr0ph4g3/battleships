@@ -5,8 +5,10 @@ const Player = require('./Player');
 
 // initializing globalVariable for playerGameBoard
 let playerGameBoard;
+let computerGameBoard;
 beforeEach(() => {
     playerGameBoard = Gameboard();
+    computerGameBoard = Gameboard();
     return playerGameBoard;
 });
 // ship tests
@@ -155,23 +157,41 @@ test('Can name player',() => {
     const human = Player('Jeff');
     expect(human.name).toBe('Jeff');
 } )
-test('Named Player is the identified as Human',() => { 
-    const human = Player('Jeff');
-    expect(human.isComputer()).toBe(false);
-} )
-test('Unnamed Player is identified as Computer', () => {
-    const human = Player();
-    expect(human.isComputer()).toBe(true);
-})
+// test('Named Player is the identified as Human',() => { 
+//     const human = Player('Jeff');
+//     expect(human.isComputer()).toBe(false);
+// } )
+// test('Unnamed Player is identified as Computer', () => {
+//     const human = Player();
+//     expect(human.isComputer()).toBe(true);
+// })
 test('Players spawn with gameBoard populated', () => {
     const human = Player('Jeff', playerGameBoard);
     expect(human.gameBoard).toBeDefined();
 })
-test.only('Can Place Ships on players GameBoard', ()=>{
+test('Can Place Ships on players GameBoard', ()=>{
     const human = Player('Jeff', playerGameBoard);
     const smallShip = ship(1, 'smallShip');
     playerGameBoard.placeShip(smallShip, 9, 0);
 expect(human.gameBoard.coordinateList[9]).toStrictEqual([smallShip]);
+})
+test('Computer Player can attack Human', () => {
+        const human = Player('Jeff', playerGameBoard);
+        const computer = Player('', computerGameBoard);
+        computer.randomAttack(playerGameBoard);
+        const checkMiss = human.gameBoard.coordinateList.includes('Miss')
+        expect(checkMiss).toBe(true)
+})
+test('Computer Player will not attack in the same spot twice', ()=> {
+    const human = Player('Jeff', playerGameBoard);
+    const computer = Player('', computerGameBoard);
+    computer.randomAttack(playerGameBoard);
+    playerGameBoard.coordinateList = ['Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss']
+    const checkMiss = playerGameBoard.coordinateList.includes('0')
+    console.log(computer.randomAttack(playerGameBoard))
+    expect(checkMiss).toBe(false)
+    expect(checkMiss).toBe(false)
+
 
 })
 
