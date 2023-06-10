@@ -1,12 +1,16 @@
 function Gameboard() {
 
+    let coordinateArray = []
+
+    function createCoordinates() {
+        for (let i = 0; i < 100; i++) {
+            coordinateArray.push(0)
+        }
+    }
+    createCoordinates()
+
     return {
-        coordinateList: [],
-        createCoordinates() {
-            for (let i = 0; i < 100; i++) {
-              this.coordinateList.push(0)
-            }
-        },
+        coordinateList: coordinateArray,
         shipList: [],
         placeShip(ship, x, y) {
             for (let i = 0; i < ship.length; i++) {
@@ -17,12 +21,13 @@ function Gameboard() {
             },
         receiveAttack(x,y){
             const coordMath = y*10+x
-            let coordList = this.coordinateList[coordMath];
+            const coordList = this.coordinateList[coordMath];
             if (coordList == 0) {
                 this.coordinateList[coordMath] = 'Miss'
     }   else if (coordList[0].sunk == false) {
             coordList.push('Hit')
             coordList[0].hit()
+            console.log(this.shipList)
             return this.loseCondition(this.shipList)
             }
         else{return false}
@@ -31,11 +36,15 @@ function Gameboard() {
             let sunkenShips = 0
             for (let I = 0; I < array.length; I++) {
                 if (array[I].sunk) {
-                    sunkenShips + 1
+                    sunkenShips += 1
                 }
             }
-             if (sunkenShips = array.length) {
-                return 'Game Over'
+             if (sunkenShips == array.length) {
+                console.log(array.length)
+                console.log(sunkenShips)
+                return true
+             } else {
+                return false
              }
             }
         }
