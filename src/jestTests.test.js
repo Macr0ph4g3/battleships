@@ -140,8 +140,8 @@ test('gameBoard returns game over if there is one ship and its sunken', () => {
 test('gameBoard returns game over if all ships on gameboard are sunken', () => {
     const smallShip = ship(1, 'smallShip');
     const mediumShip = ship(2, 'smallShip');
-    playerGameBoard.placeShip(mediumShip, 0, 2);
     playerGameBoard.placeShip(smallShip, 0, 1);
+    playerGameBoard.placeShip(mediumShip, 0, 2);
     playerGameBoard.receiveAttack(0,1);
     playerGameBoard.receiveAttack(0,2);
     const result = playerGameBoard.receiveAttack(1,2);
@@ -152,20 +152,27 @@ test('gameBoard returns game over if all ships on gameboard are sunken', () => {
 // Player Tests
 
 test('Can name player',() => { 
-    const human = Player('Jeff')
-    expect(human.name).toBe('Jeff')
+    const human = Player('Jeff');
+    expect(human.name).toBe('Jeff');
 } )
 test('Named Player is the identified as Human',() => { 
-    const human = Player('Jeff')
-    expect(human.isComputer()).toBe(false)
+    const human = Player('Jeff');
+    expect(human.isComputer()).toBe(false);
 } )
 test('Unnamed Player is identified as Computer', () => {
-    const human = Player()
-    expect(human.isComputer()).toBe(true)
+    const human = Player();
+    expect(human.isComputer()).toBe(true);
 })
 test('Players spawn with gameBoard populated', () => {
-    const human = Player('Jeff', playerGameBoard)
-    expect(human.gameBoard).toBeDefined()
+    const human = Player('Jeff', playerGameBoard);
+    expect(human.gameBoard).toBeDefined();
+})
+test.only('Can Place Ships on players GameBoard', ()=>{
+    const human = Player('Jeff', playerGameBoard);
+    const smallShip = ship(1, 'smallShip');
+    playerGameBoard.placeShip(smallShip, 9, 0);
+expect(human.gameBoard.coordinateList[9]).toStrictEqual([smallShip]);
+
 })
 
 
