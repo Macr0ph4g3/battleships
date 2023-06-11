@@ -157,14 +157,6 @@ test('Can name player',() => {
     const human = Player('Jeff');
     expect(human.name).toBe('Jeff');
 } )
-// test('Named Player is the identified as Human',() => { 
-//     const human = Player('Jeff');
-//     expect(human.isComputer()).toBe(false);
-// } )
-// test('Unnamed Player is identified as Computer', () => {
-//     const human = Player();
-//     expect(human.isComputer()).toBe(true);
-// })
 test('Players spawn with gameBoard populated', () => {
     const human = Player('Jeff', playerGameBoard);
     expect(human.gameBoard).toBeDefined();
@@ -185,13 +177,21 @@ test('Computer Player can attack Human', () => {
 test('Computer Player will not attack in the same spot twice', ()=> {
     const human = Player('Jeff', playerGameBoard);
     const computer = Player('', computerGameBoard);
+    playerGameBoard.coordinateList = [0]
     computer.randomAttack(playerGameBoard);
-    playerGameBoard.coordinateList = ['Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss','Miss']
-    const checkMiss = playerGameBoard.coordinateList.includes('0')
-    console.log(computer.randomAttack(playerGameBoard))
-    expect(checkMiss).toBe(false)
-    expect(checkMiss).toBe(false)
+    const sameSpotCheck = computer.randomAttack(playerGameBoard)
+    expect(sameSpotCheck).toBe(false)
 
+})
+test('Computer Player can attack every spot on the map', () => {
+    const human = Player('Jeff', playerGameBoard);
+    const computer = Player('', computerGameBoard);
+    for (let I = 0; I <= 99; I++) {
+        computer.randomAttack(playerGameBoard);        
+    }
+    console.log(playerGameBoard.coordinateList)
+    const checkMiss = human.gameBoard.coordinateList.includes(0)
+    expect(checkMiss).toBe(false)
 
 })
 
