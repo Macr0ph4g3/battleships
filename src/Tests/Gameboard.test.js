@@ -1,51 +1,15 @@
 /* eslint-disable new-cap */
-const ship = require('./ships');
-const Gameboard = require('./Gameboard');
-const Player = require('./Player');
+const ship = require('../ships');
+const Gameboard = require('../Gameboard');
 
 // initializing globalVariable for playerGameBoard
 let playerGameBoard;
-let computerGameBoard;
 beforeEach(() => {
     playerGameBoard = Gameboard();
-    computerGameBoard = Gameboard();
     return playerGameBoard;
 });
-// ship tests
-test('hit increases total hits', () => {
-// Creating ship object
-const smallShip = ship(3, 'smallShip');
-    smallShip.hit();
-    expect(smallShip.damage).toBe(1);
-})
-test('Multiple hits increase dmg multiple times', () => {
-// Creating ship object
-const smallShip = ship(3, 'smallShip');
-    smallShip.hit();
-    smallShip.hit();
-    expect(smallShip.damage).toBe(2);
-})
-test('Damage = length marks the ship as Sunk', () => {
-// Creating ship object
-const smallShip = ship(3, 'smallShip');
-smallShip.hit();
-smallShip.hit();
-smallShip.hit();
-expect(smallShip.isSunk()).toBe(true);
-})
-test('unable to hit ship more than total length', ()=>{
-// Creating ship object
-const smallShip = ship(3, 'smallShip');
-smallShip.hit();
-smallShip.hit();
-smallShip.hit();
-smallShip.hit();
 
-expect(smallShip.hit()).toBe('Unable to attack sunken ship');
 
-})
-
-// gameboard tests
 test('GameBoard has an array of coordinates', () => {
     expect(playerGameBoard.coordinateList.length).toBe(100);
 })
@@ -147,65 +111,5 @@ test('gameBoard returns game over if all ships on gameboard are sunken', () => {
     playerGameBoard.receiveAttack(0,1);
     playerGameBoard.receiveAttack(0,2);
     const result = playerGameBoard.receiveAttack(1,2);
-
     expect(result).toBe(true)
 })
-
-// Player Tests
-
-test('Can name player',() => { 
-    const human = Player('Jeff');
-    expect(human.name).toBe('Jeff');
-} )
-test('Players spawn with gameBoard populated', () => {
-    const human = Player('Jeff', playerGameBoard);
-    expect(human.gameBoard).toBeDefined();
-})
-test('Can Place Ships on players GameBoard', ()=>{
-    const human = Player('Jeff', playerGameBoard);
-    const smallShip = ship(1, 'smallShip');
-    playerGameBoard.placeShip(smallShip, 9, 0);
-expect(human.gameBoard.coordinateList[9]).toStrictEqual([smallShip]);
-})
-test('Computer Player can attack Human', () => {
-        const human = Player('Jeff', playerGameBoard);
-        const computer = Player('', computerGameBoard);
-        computer.randomAttack(playerGameBoard);
-        const checkMiss = human.gameBoard.coordinateList.includes('Miss')
-        expect(checkMiss).toBe(true)
-})
-test('Computer Player will not attack in the same spot twice', ()=> {
-    const human = Player('Jeff', playerGameBoard);
-    const computer = Player('', computerGameBoard);
-    playerGameBoard.coordinateList = [0]
-    computer.randomAttack(playerGameBoard);
-    const sameSpotCheck = computer.randomAttack(playerGameBoard)
-    expect(sameSpotCheck).toBe(false)
-
-})
-test('Computer Player can attack every spot on the map', () => {
-    const human = Player('Jeff', playerGameBoard);
-    const computer = Player('', computerGameBoard);
-    for (let I = 0; I <= 99; I++) {
-        computer.randomAttack(playerGameBoard);        
-    }
-    console.log(playerGameBoard.coordinateList)
-    const checkMiss = human.gameBoard.coordinateList.includes(0)
-    expect(checkMiss).toBe(false)
-
-})
-
-
-
-// test('receive an out-of-bounds attack', () => {
-//     
-//     
-//     const smallShip = ship(1, 'smallShip');
-//     playerGameBoard.placeShip(smallShip, 0, 1);
-//     const result = playerGameBoard.receiveAttack(0,50);
-//     expect(result).toBe(false);
-// })
-// This isn't really necessary because user will end up clicking on the board
-// and so they can't technically go out of bounds unless they're working
-// in the console and forcing coordinates which I would just hide the 
-// function from the end user. 

@@ -1,5 +1,6 @@
 function Gameboard() {
 
+    // eslint-disable-next-line prefer-const
     let coordinateArray = []
 
     function createCoordinates() {
@@ -47,4 +48,4 @@ function Gameboard() {
         }
     }
 
-module.exports = Gameboard
+export { Gameboard }

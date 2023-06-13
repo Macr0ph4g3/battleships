@@ -1,6 +1,6 @@
-function Ship(length) {
+function Ship(length, name) {
     return {
-        name: 'smallShip',
+        name,
         length,
         damage: 0,
         sunk: false,
@@ -21,4 +21,4 @@ function Ship(length) {
     }
 }
 
-module.exports = Ship
+export { Ship }

@@ -1,9 +1,10 @@
 {
   "name": "battleships",
   "version": "1.0.0",
-  "description": "",  
-  "private": true,
+  "description": "",
   "main": "index.js",
+  "private": true,
+
   "scripts": {
     "test": "jest",
     "build": "webpack"
@@ -20,11 +21,12 @@
   },
   "homepage": "https://github.com/Macr0ph4g3/battleships#readme",
   "devDependencies": {
-    "webpack": "^5.82.0",
-    "webpack-cli": "^5.0.2",
-    "css-loader": "^6.7.3",
+    "css-loader": "^6.8.1",
     "csv-loader": "^3.0.5",
     "html-webpack-plugin": "^5.5.0",
-    "style-loader": "^3.3.1",
-    "xml-loader": "^1.2.1"  }
+    "style-loader": "^3.3.3",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2",
+    "xml-loader": "^1.2.1"
+  }
 }

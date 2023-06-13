@@ -3,7 +3,6 @@ function Player(name, gameBoard) {
 
     return {
         name,
-
         gameBoard,
         randomAttack(enemyGameBoard) {
           const newArray = [];
@@ -18,7 +17,6 @@ function Player(name, gameBoard) {
           }
         
           enemyGameBoard.receiveAttack(nextHitLocation, 0)
-
         }
         }
     }
