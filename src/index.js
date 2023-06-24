@@ -1,5 +1,5 @@
 
 import './style.css';
-import { test } from './gameLoop'
+import {generateGrid} from './gameUI'
 
-test('test')
+generateGrid()

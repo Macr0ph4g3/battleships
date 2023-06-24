@@ -20,5 +20,5 @@ function Ship(length, name) {
         
     }
 }
-
-export { Ship }
+module.exports = Ship
+// export { Ship }

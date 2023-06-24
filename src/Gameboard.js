@@ -48,4 +48,6 @@ function Gameboard() {
         }
     }
 
-export { Gameboard }
+
+module.exports = Gameboard
+// export { Gameboard }

@@ -113,3 +113,13 @@ test('gameBoard returns game over if all ships on gameboard are sunken', () => {
     const result = playerGameBoard.receiveAttack(1,2);
     expect(result).toBe(true)
 })
+test('Ensure placement cannot go past boundaries', () => {
+    const mediumShip = ship(3,'mediumShip');
+    const placementOne = playerGameBoard.placeShip(mediumShip,9, 0);
+    const placementTwo = playerGameBoard.placeShip(mediumShip,8, 0);
+    const placementThree = playerGameBoard.placeShip(mediumShip,7, 0);
+
+    expect(placementOne).toBe(False);
+    expect(placementTwo).toBe(False);
+    expect(placementThree).toBe(True);
+})

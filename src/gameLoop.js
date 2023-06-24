@@ -2,6 +2,7 @@
 
 import { Ship } from "./ships";
 import { Gameboard } from "./Gameboard"
+import { Player } from "./Player"
 
 // Initialize Ship objects
     // Players Ships
@@ -22,6 +23,12 @@ let cLargeShip    = Ship(5,'Small Ship')
 // Initialize Game Boards
     // Player Game Board
 let playerGameBoard = Gameboard()
+playerGameBoard.placeShip(pSmallestShip)
+playerGameBoard.placeShip(pSmallShip)
+playerGameBoard.placeShip(pSmallShipTwo)
+playerGameBoard.placeShip(pMediumShip)
+playerGameBoard.placeShip(pLargeShip)
+
 
     // Computer Game Board
 let computerGameBoard = Gameboard()
@@ -29,7 +36,6 @@ let computerGameBoard = Gameboard()
 // Initialize Player
 
 let computer = Player('',computerGameBoard )
-
-
+let player = Player('Human',computerGameBoard )
 
 export {  }
