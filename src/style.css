@@ -51,7 +51,7 @@ table {
 html, body {
     height: 100%;
     width:100%;
-    background-color: lightgray;
+    background-color: #d3d3d3;
 
 }
 
@@ -61,7 +61,7 @@ html, body {
     align-items: center;
     border: 20px;
     font-size: 35px;
-    margin-bottom: 200px
+    margin-bottom: 150px
 }
 .mainGame {
     display: grid;
@@ -75,13 +75,15 @@ html, body {
     justify-content: center;
     align-items: center;
     width: 100%;
-
 }
+
+.gameContainer div:first-of-type {
+    margin-bottom: 35px;
+    }
+
 .gameBoard {
     width: 50%;
     position: relative;
-    background-color:blue;
-
 }
 .gameBoard:after {
     content: ""; 
@@ -95,19 +97,32 @@ html, body {
     height: 100%;
     display: grid;
     grid-template-rows: repeat(10, 1fr);
+    row-gap: 4px;
 
 }
 .gameBoardBody tr td {
     height: 100%;
-    width: 100%
+    width: 100%;
+    border: 1px black solid;
+    
 }
 
 .gameBoardBody tr td:hover {
-    background-color: darkred;
+    border: 1px teal solid;
+    background-color: #b6b6b6
 }
 .gameboardOneRows {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 4px;
 }
+.gameboardTwoRows {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 4px;
+}
+
+
 .gameboardTwoRows {
     display: flex;
 }

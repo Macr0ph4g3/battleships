@@ -12,28 +12,41 @@ let workingRow = 0
 
         gameboardBodies[0].appendChild(tr)
         gameboardBodies[1].appendChild(tr2)
-        console.log(`${i} loop`)
 // Then create 10 columns in each row
 
         for (let j = 0; j < 10; j++) {
-            console.log('Starting Rows')
             const gbOne = document.querySelectorAll('.gameboardOneRows');
             const td = document.createElement('td')
-            td.dataset.index = j
+            td.dataset.x = j
             td.dataset.owner = 'Player'
             gbOne[workingRow].appendChild(td)
         }
         for (let j = 0; j < 10; j++) {
             const gbTwo = document.querySelectorAll('.gameboardTwoRows');
             const td = document.createElement('td')
-            td.dataset.index = j
+            td.dataset.x = j
             td.dataset.owner = 'Computer'
             gbTwo[workingRow].appendChild(td)
         }
-        console.log(workingRow)
+    
         workingRow = workingRow + 1
 
     }
+// Adding event listeners to newly created table cells
+
+const tdList = document.querySelectorAll('td')
+tdList.forEach( td => {
+    td.addEventListener('click', ()=>{
+        console.log(`${td.dataset.x} X`)
+        console.log(`${td.parentElement.dataset.y} Y`)
+        console.log(`${td.dataset.owner} X`)
+
+
+    })
+})
+
 }
+
+
 
 export { generateGrid }
