@@ -9,15 +9,15 @@ import { Player } from "./Player"
 let pSmallestShip = Ship(2,'Smallest Ship')
 let pSmallShip    = Ship(3,'Small Ship')
 let pSmallShipTwo = Ship(3,'Small Ship')
-let pMediumShip   = Ship(4,'Small Ship')
-let pLargeShip    = Ship(5,'Small Ship')
+let pMediumShip   = Ship(4,'Medium Ship')
+let pLargeShip    = Ship(5,'Large Ship')
 
     // Computers Ships
 let cSmallestShip = Ship(2,'Smallest Ship')
 let cSmallShip    = Ship(3,'Small Ship')
 let cSmallShipTwo = Ship(3,'Small Ship')
-let cMediumShip   = Ship(4,'Small Ship')
-let cLargeShip    = Ship(5,'Small Ship')
+let cMediumShip   = Ship(4,'Medium Ship')
+let cLargeShip    = Ship(5,'Large Ship')
 
 
 // Initialize Game Boards
@@ -38,4 +38,4 @@ let computerGameBoard = Gameboard()
 let computer = Player('',computerGameBoard )
 let player = Player('Human',computerGameBoard )
 
-export {  }
+module.exports = {computer, player}

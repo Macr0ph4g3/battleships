@@ -1,3 +1,5 @@
+const gameLoop = require('../src/gameLoop');
+
 const gameboardBodies = document.querySelectorAll('.gameBoardBody')
 function generateGrid() {
 // First create 10 rows
@@ -40,13 +42,14 @@ tdList.forEach( td => {
         console.log(`${td.dataset.x} X`)
         console.log(`${td.parentElement.dataset.y} Y`)
         console.log(`${td.dataset.owner} X`)
-
-
     })
 })
 
 }
 
-
+function showShips(array){
+    // This function pulls the Gameboard Coordinate list and identifies Ships within.
+    // Then it will mark the sections with ships with a darker gray on the DOM, 
+}
 
 export { generateGrid }

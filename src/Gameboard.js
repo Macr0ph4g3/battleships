@@ -14,12 +14,18 @@ function Gameboard() {
         coordinateList: coordinateArray,
         shipList: [],
         placeShip(ship, x, y) {
+            if(x + ship.length > 10) {
+                return false
+            } else {
+
             for (let i = 0; i < ship.length; i++) {
                 const coordMath = y*10+x
                 this.coordinateList[coordMath+i] = [ship]
                 this.shipList.push(ship)
             }
-            },
+         }
+        return true
+        },
         receiveAttack(x,y){
             const coordMath = y*10+x
             const coordList = this.coordinateList[coordMath];
