@@ -20,5 +20,5 @@ function Player(name, gameBoard) {
         }
         }
     }
-    module.exports = Player
-    // export { Player }
+    // module.exports = Player
+    export { Player }

@@ -1,4 +1,6 @@
-const gameLoop = require('../src/gameLoop');
+import {computer, player} from './gameLoop.js'
+
+console.log(computer,player)
 
 const gameboardBodies = document.querySelectorAll('.gameBoardBody')
 function generateGrid() {
@@ -41,15 +43,20 @@ tdList.forEach( td => {
     td.addEventListener('click', ()=>{
         console.log(`${td.dataset.x} X`)
         console.log(`${td.parentElement.dataset.y} Y`)
-        console.log(`${td.dataset.owner} X`)
+        console.log(`${td.dataset.owner}`)
+        if(td.dataset.owner == 'Computer'){
+            const x = Number(td.dataset.x)
+            const y = Number(td.parentElement.dataset.y)
+            computer.gameBoard.receiveAttack(x,y)
+        }
     })
 })
 
 }
 
-function showShips(array){
-    // This function pulls the Gameboard Coordinate list and identifies Ships within.
-    // Then it will mark the sections with ships with a darker gray on the DOM, 
-}
+// function showShips(array){
+//     // This function pulls the Gameboard Coordinate list and identifies Ships within.
+//     // Then it will mark the sections with ships with a darker gray on the DOM, 
+// }
 
 export { generateGrid }

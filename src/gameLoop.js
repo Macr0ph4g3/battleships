@@ -23,19 +23,25 @@ let cLargeShip    = Ship(5,'Large Ship')
 // Initialize Game Boards
     // Player Game Board
 let playerGameBoard = Gameboard()
-playerGameBoard.placeShip(pSmallestShip)
-playerGameBoard.placeShip(pSmallShip)
-playerGameBoard.placeShip(pSmallShipTwo)
-playerGameBoard.placeShip(pMediumShip)
-playerGameBoard.placeShip(pLargeShip)
-
+playerGameBoard.placeShip(pSmallestShip,1,1)
+playerGameBoard.placeShip(pSmallShip,1,1)
+// playerGameBoard.placeShip(pSmallShipTwo)
+// playerGameBoard.placeShip(pMediumShip)
+// playerGameBoard.placeShip(pLargeShip)
 
     // Computer Game Board
 let computerGameBoard = Gameboard()
 
+computerGameBoard.placeShip(cSmallestShip,1,1)
+// computerGameBoard.placeShip(cSmallShip)
+// computerGameBoard.placeShip(cSmallShipTwo)
+// computerGameBoard.placeShip(cMediumShip)
+// computerGameBoard.placeShip(cLargeShip)
+
+
 // Initialize Player
 
 let computer = Player('',computerGameBoard )
-let player = Player('Human',computerGameBoard )
+let player = Player('Human',playerGameBoard )
 
-module.exports = {computer, player}
+export {computer, player}

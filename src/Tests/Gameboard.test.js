@@ -1,6 +1,7 @@
 /* eslint-disable new-cap */
 const ship = require('../ships');
-const Gameboard = require('../Gameboard');
+// const Gameboard = require('../Gameboard');
+import { Gameboard } from '../Gameboard'
 
 // initializing globalVariable for playerGameBoard
 let playerGameBoard;
