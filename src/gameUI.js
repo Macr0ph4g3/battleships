@@ -3,6 +3,7 @@ import {computer, player} from './gameLoop.js'
 console.log(computer,player)
 
 const gameboardBodies = document.querySelectorAll('.gameBoardBody')
+console.log(gameboardBodies)
 function generateGrid() {
 // First create 10 rows
 let workingRow = 0
@@ -53,7 +54,6 @@ tdList.forEach( td => {
 })
 
 }
-
 // function showShips(array){
 //     // This function pulls the Gameboard Coordinate list and identifies Ships within.
 //     // Then it will mark the sections with ships with a darker gray on the DOM, 

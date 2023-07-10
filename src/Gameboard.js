@@ -20,7 +20,7 @@ function Gameboard() {
             
             // This ensures you cannot place a ship past the boundaries
             if((x + ship.length > 10) ) {
-                console.log(`Placed ${ship} unsuccessfully`)
+                console.log(`Placed ${ship.name} unsuccessfully`)
                 return false
             } 
 
@@ -36,10 +36,12 @@ function Gameboard() {
                     this.coordinateList[coordMath+i] = [ship]
                 }
                 this.shipList.push(ship)
-                console.log(`Placed ${ship} successfully`)
+                console.log(`Placed ${ship.name} successfully`) 
+                
+                // this.revealShips(ship, x, y)
                 return true
             } else { 
-                console.log(`Placed ${ship} unsuccessfully`)
+                console.log(`Placed ${ship.name} unsuccessfully`)
 
                 return false }         
         },
@@ -67,7 +69,24 @@ function Gameboard() {
              } else {
                 return false
              }
-            }
+            },
+        // revealShipPlacement(player,ship,x,y){
+        //         // First locate the square with y coordinate below
+        //         let row = document.querySelectorAll(`[data-y="${y}"]`);
+        //         // Then verify it belongs to the X coordinate below
+        //         // this won't work because it has multiple Y's selected need to verify the
+        //         // person it's using
+        //         // Then, for that specific square, perform the following code.
+                
+        //             if (player=="human"){
+        //             for (let I = 0; I < ship.length; I++) {
+        //                 let square = row[0].querySelector(`[data-x="${x+I}"]`)
+            
+        //                 square.style.backgroundColor = "blue"
+        //             }   }      
+        //      }
+            
+        // revealShipHits
         }
     }
 

@@ -3,6 +3,10 @@
 import { Ship } from "./ships";
 import { Gameboard } from "./Gameboard"
 import { Player } from "./Player"
+import {generateGrid } from './gameUI'
+
+console.log('gameloop')
+
 
 // Initialize Ship objects
     // Players Ships
@@ -23,25 +27,36 @@ let cLargeShip    = Ship(5,'Large Ship')
 // Initialize Game Boards
     // Player Game Board
 let playerGameBoard = Gameboard()
-playerGameBoard.placeShip(pSmallestShip,1,1)
-playerGameBoard.placeShip(pSmallShip,1,1)
-// playerGameBoard.placeShip(pSmallShipTwo)
-// playerGameBoard.placeShip(pMediumShip)
-// playerGameBoard.placeShip(pLargeShip)
 
     // Computer Game Board
 let computerGameBoard = Gameboard()
 
-computerGameBoard.placeShip(cSmallestShip,1,1)
-// computerGameBoard.placeShip(cSmallShip)
-// computerGameBoard.placeShip(cSmallShipTwo)
-// computerGameBoard.placeShip(cMediumShip)
-// computerGameBoard.placeShip(cLargeShip)
-
-
 // Initialize Player
 
-let computer = Player('',computerGameBoard )
-let player = Player('Human',playerGameBoard )
+let computer = Player('computer',computerGameBoard )
+let player = Player('player',playerGameBoard )
+
+// Placement of ships
+
+
+player.gameBoard.placeShip(pSmallestShip,1,1)
+if(player.gameBoard.placeShip(pSmallShipTwo,5,4) == true){
+    // player.gameBoard.revealShipPlacement("human",pSmallShipTwo,5,4)
+ }
+
+
+player.gameBoard.placeShip(pSmallShip,1,2)
+player.gameBoard.placeShip(pMediumShip,1,4)
+player.gameBoard.placeShip(pLargeShip,1,5)
+
+// computer.gameBoard.placeShip(cSmallestShip,1,1)
+// computer.gameBoard.placeShip(cSmallShip,1,2)
+// computer.gameBoard.placeShip(cSmallShipTwo,1,3)
+// computer.gameBoard.placeShip(cMediumShip,1,4)
+// computer.gameBoard.placeShip(cLargeShip,1,5)
+
+
+
+
 
 export {computer, player}
