@@ -3,7 +3,7 @@
 import { Ship } from "./ships";
 import { Gameboard } from "./Gameboard"
 import { Player } from "./Player"
-import {generateGrid } from './gameUI'
+import { generateGrid } from './gameUI'
 
 console.log('gameloop')
 
@@ -39,15 +39,23 @@ let player = Player('player',playerGameBoard )
 // Placement of ships
 
 
-player.gameBoard.placeShip(pSmallestShip,1,1)
 if(player.gameBoard.placeShip(pSmallShipTwo,5,4) == true){
-    // player.gameBoard.revealShipPlacement("human",pSmallShipTwo,5,4)
+    player.gameBoard.revealShipPlacement("human",pSmallShipTwo,5,4)
  }
 
+if(player.gameBoard.placeShip(pSmallShip,5,2)){
+    player.gameBoard.revealShipPlacement("human",pSmallShip,5,2)
 
-player.gameBoard.placeShip(pSmallShip,1,2)
-player.gameBoard.placeShip(pMediumShip,1,4)
-player.gameBoard.placeShip(pLargeShip,1,5)
+}
+
+if(player.gameBoard.placeShip(pMediumShip,1,6)){
+    player.gameBoard.revealShipPlacement("human",pMediumShip,1,6)
+
+}
+if(player.gameBoard.placeShip(pLargeShip,2,8)){
+    player.gameBoard.revealShipPlacement("human",pLargeShip,2,8)
+
+}
 
 // computer.gameBoard.placeShip(cSmallestShip,1,1)
 // computer.gameBoard.placeShip(cSmallShip,1,2)

@@ -70,21 +70,31 @@ function Gameboard() {
                 return false
              }
             },
-        // revealShipPlacement(player,ship,x,y){
-        //         // First locate the square with y coordinate below
-        //         let row = document.querySelectorAll(`[data-y="${y}"]`);
-        //         // Then verify it belongs to the X coordinate below
-        //         // this won't work because it has multiple Y's selected need to verify the
-        //         // person it's using
-        //         // Then, for that specific square, perform the following code.
+        revealShipPlacement(player,ship,x,y){
+                // First locate the square with y coordinate below
+                const row = document.querySelectorAll(`[data-y="${y}"]`);
+                // Then verify it belongs to the X coordinate below
+                // this won't work because it has multiple Y's selected need to verify the
+                // person it's using
+                // Then, for that specific square, perform the following code.
                 
-        //             if (player=="human"){
-        //             for (let I = 0; I < ship.length; I++) {
-        //                 let square = row[0].querySelector(`[data-x="${x+I}"]`)
+                    if (player=="human"){
+                    for (let I = 0; I < ship.length; I++) {
+                        const square = row[0].querySelector(`[data-x="${x+I}"]`)
             
-        //                 square.style.backgroundColor = "blue"
-        //             }   }      
-        //      }
+                        square.style.backgroundColor = "blue"
+                    }   }      
+             },
+        // revealShipHits(player,ship,x,y){
+        //     const row = document.querySelectorAll(`[data-y="${y}"]`);
+        //     let square
+        //     if(player=="human"){
+        //         square = row[0].querySelector(`[data-x="${x+I}"]`)
+        //     } else { const square = row[1].querySelector(`[data-x="${x+I}"]`)        }
+
+
+
+        //     }
             
         // revealShipHits
         }
