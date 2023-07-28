@@ -3,7 +3,6 @@
 import { Ship } from "./ships";
 import { Gameboard } from "./Gameboard"
 import { Player } from "./Player"
-import { generateGrid } from './gameUI'
 
 console.log('gameloop')
 
@@ -57,11 +56,11 @@ if(player.gameBoard.placeShip(pLargeShip,2,8)){
 
 }
 
-// computer.gameBoard.placeShip(cSmallestShip,1,1)
-// computer.gameBoard.placeShip(cSmallShip,1,2)
-// computer.gameBoard.placeShip(cSmallShipTwo,1,3)
-// computer.gameBoard.placeShip(cMediumShip,1,4)
-// computer.gameBoard.placeShip(cLargeShip,1,5)
+computer.gameBoard.placeShip(cSmallestShip,1,1)
+computer.gameBoard.placeShip(cSmallShip,1,2)
+computer.gameBoard.placeShip(cSmallShipTwo,1,3)
+computer.gameBoard.placeShip(cMediumShip,1,4)
+computer.gameBoard.placeShip(cLargeShip,1,5)
 
 
 

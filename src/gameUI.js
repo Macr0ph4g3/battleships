@@ -1,5 +1,5 @@
+
 const gameboardBodies = document.querySelectorAll('.gameBoardBody')
-console.log(gameboardBodies)
 function generateGrid() {
 // First create 10 rows
 let workingRow = 0
@@ -37,19 +37,6 @@ let workingRow = 0
 }
 generateGrid()
 
-const tdList = document.querySelectorAll('td')
-tdList.forEach( td => {
-    td.addEventListener('click', ()=>{
-        console.log(`${td.dataset.x} X`)
-        console.log(`${td.parentElement.dataset.y} Y`)
-        console.log(`${td.dataset.owner}`)
-        if(td.dataset.owner == 'Computer'){
-            const x = Number(td.dataset.x)
-            const y = Number(td.parentElement.dataset.y)
-            computer.gameBoard.receiveAttack(x,y)
-        }
-    })
-})
 
 // function showShips(array){
 //     // This function pulls the Gameboard Coordinate list and identifies Ships within.

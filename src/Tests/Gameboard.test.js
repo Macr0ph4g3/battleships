@@ -80,7 +80,7 @@ test('receive an attack at already hit coordinates returns error', () => {
     playerGameBoard.receiveAttack(0,1)
    const result = playerGameBoard.receiveAttack(0,1);
 
-    expect(result).toBe(false)
+    expect(result).toBe('Forbidden')
 })
 test('gameboard accurately reports total ships (1)', ()=> {
     const smallShip = Ship(1, 'smallShip');
@@ -100,7 +100,8 @@ test('gameboard accurately reports total ships (2)', ()=> {
 test('gameBoard returns game over if there is one ship and its sunken', () => {
     const smallShip = Ship(1, 'smallShip');
     playerGameBoard.placeShip(smallShip, 0, 1);
-    const result = playerGameBoard.receiveAttack(0,1);
+    playerGameBoard.receiveAttack(0,1)
+    const result = playerGameBoard.loseCondition(playerGameBoard.shipList);
 
     expect(result).toBe(true)
 
@@ -112,7 +113,9 @@ test('gameBoard returns game over if all ships on gameboard are sunken', () => {
     playerGameBoard.placeShip(mediumShip, 0, 2);
     playerGameBoard.receiveAttack(0,1);
     playerGameBoard.receiveAttack(0,2);
-    const result = playerGameBoard.receiveAttack(1,2);
+    playerGameBoard.receiveAttack(1,2);
+    const result = playerGameBoard.loseCondition(playerGameBoard.shipList);
+
     expect(result).toBe(true)
 })
 test('Ensure placement cannot go past boundaries', () => {

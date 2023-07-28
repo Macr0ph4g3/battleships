@@ -50,14 +50,19 @@ function Gameboard() {
             const coordList = this.coordinateList[coordMath];
             if (coordList == 0) {
                 this.coordinateList[coordMath] = 'Miss'
-    }   else if (coordList[0].sunk == false) {
+                return 'Miss'
+    }   else if (coordList[0].sunk == false && !coordList.includes('Hit')) {
             coordList.push('Hit')
             coordList[0].hit()
-            return this.loseCondition(this.shipList)
+            this.loseCondition(this.shipList)
+
+            return 'Hit'
             }
-        else{return false}
+        else if(coordList.includes('Hit')){
+            return 'Forbidden'}
         },
         loseCondition(array){
+            console.log('test')
             let sunkenShips = 0
             for (let I = 0; I < array.length; I++) {
                 if (array[I].sunk) {
