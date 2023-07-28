@@ -1,7 +1,12 @@
 /* eslint-disable new-cap */
-const ship = require('../ships');
-const Gameboard = require('../Gameboard');
-const Player = require('../Player');
+// const ship = require('../ships');
+// const Gameboard = require('../Gameboard');
+// const Player = require('../Player');
+import { Gameboard } from '../Gameboard'
+import { Player } from '../Player'
+import { Ship } from '../ships'
+
+
 
 let playerGameBoard;
 let computerGameBoard;
@@ -23,7 +28,7 @@ test('Players spawn with gameBoard populated', () => {
 })
 test('Can Place Ships on players GameBoard', ()=>{
     const human = Player('Jeff', playerGameBoard);
-    const smallShip = ship(1, 'smallShip');
+    const smallShip = Ship(1, 'smallShip');
     playerGameBoard.placeShip(smallShip, 9, 0);
 expect(human.gameBoard.coordinateList[9]).toStrictEqual([smallShip]);
 })
