@@ -3,8 +3,9 @@
 Things left to do: 
 
 ## Set Up Round Logic
-- [ ] Set up system to calculate turns
-- [ ] Initiate a computer-attack upon computers turn after short delay
+- [x] Set up system to calculate turns
+- [x] Initiate a computer-attack upon computers turn after short delay
+- [ ] display UI for computer-attack hits
 - [ ] Set up system to detect if a gameboard has hit game over
 - [ ] display UI for turns
 - [ ] display UI for game over and reset

@@ -62,7 +62,6 @@ function Gameboard() {
             return 'Forbidden'}
         },
         loseCondition(array){
-            console.log('test')
             let sunkenShips = 0
             for (let I = 0; I < array.length; I++) {
                 if (array[I].sunk) {
@@ -70,6 +69,7 @@ function Gameboard() {
                 }
             }
              if (sunkenShips == array.length) {
+                console.log(`Lost`)
                 return true
              } else {
                 return false

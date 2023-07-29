@@ -17,6 +17,7 @@ function Player(name, gameBoard) {
           }
         
           enemyGameBoard.receiveAttack(nextHitLocation, 0)
+          console.log('PC attacked'+' '+nextHitLocation)
         }
         }
     }
