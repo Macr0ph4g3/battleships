@@ -19,7 +19,7 @@ beforeEach(() => {
 });
 
 test('Can name player',() => { 
-    const human = Player('Jeff');
+    const human = Player(true, 'Jeff');
     expect(human.name).toBe('Jeff');
 } )
 test('Players spawn with gameBoard populated', () => {

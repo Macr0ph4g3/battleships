@@ -1,9 +1,15 @@
 
-function Player(name, gameBoard) {
+import { shipGeneration } from "./ship-generation";
+import { Gameboard } from "./Gameboard";
+function Player(boolean, name) {
+
+  const isHuman =  boolean ? true : false;
+
 
     return {
+        isHuman,
         name,
-        gameBoard,
+        gameBoard: Gameboard(),
         randomAttack(enemyGameBoard) {
           const newArray = [];
           // This calculates every area that is possible to hit and pushes it in to above array
@@ -17,8 +23,10 @@ function Player(name, gameBoard) {
           }
         
           enemyGameBoard.receiveAttack(nextHitLocation, 0)
-          console.log('PC attacked'+' '+nextHitLocation)
-        }
+          // console.log('PC attacked'+' '+nextHitLocation)
+        },
+        shipList: shipGeneration()
+
         }
     }
     // module.exports = Player

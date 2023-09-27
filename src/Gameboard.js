@@ -105,6 +105,6 @@ function Gameboard() {
         }
     }
 
-
+console.log(Gameboard())
 // module.exports = Gameboard
 export { Gameboard }
