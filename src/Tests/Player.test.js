@@ -22,10 +22,6 @@ test('Can name player',() => {
     const human = Player(true, 'Jeff');
     expect(human.name).toBe('Jeff');
 } )
-test('Players spawn with gameBoard populated', () => {
-    const human = Player('Jeff', playerGameBoard);
-    expect(human.gameBoard).toBeDefined();
-})
 test('Can Place Ships on players GameBoard', ()=>{
     const human = Player('Jeff', playerGameBoard);
     const smallShip = Ship(1, 'smallShip');

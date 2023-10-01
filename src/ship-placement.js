@@ -4,15 +4,14 @@ import { Ship } from "./ships";
 import { Gameboard } from "./Gameboard"
 import { Player } from "./Player"
 
-let computer = Player('computer')
-let player = Player('player')
-let turn = ""
+let computer = Player(false,'computer')
+let player = Player(true, 'player')
 console.log(player)
+console.log(computer)
+
 function gameInitialization(){
 
     // Placement of ships
-    
-    
     if(player.gameBoard.placeShip(player.shipList[0],5,4) == true){
         player.gameBoard.revealShipPlacement("human",player.shipList[0],5,4)
      }
@@ -28,7 +27,6 @@ function gameInitialization(){
     }
     if(player.gameBoard.placeShip(player.shipList[3],2,8)){
         player.gameBoard.revealShipPlacement("human",player.shipList[3],2,8)
-    
     }
     
     computer.gameBoard.placeShip(computer.shipList[0],1,1)
@@ -38,25 +36,4 @@ function gameInitialization(){
     computer.gameBoard.placeShip(computer.shipList[4],1,5)
     
 }
-function gameLogic(computer, player){
-
-    // Checks that each player has five ships in ship list so that game starts properly
-    // If thats true then set the turn to be for the Player to start
-    // Each turn check lose condition for both players
-    // if either one is true then end game and stop clicking
-    if((computer.gameBoard.shipList.length = 5) && (player.gameBoard.shipList.length = 5) ) {
-        turn = 'Player'
-    }
-    if(turn = 'Player'){
-        turn = 'Computer'
-    }
-    if(turn = 'Computer'){
-        setTimeout(()=>{computer.randomAttack(player.gameBoard)
-            turn = 'Player'
-            console.log('PC attacked')
-    
-        }, 500);
-    }
-
-}
-export {gameInitialization, gameLogic, computer, player, turn}
+export {gameInitialization, computer, player}

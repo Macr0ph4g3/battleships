@@ -1,5 +1,6 @@
 const gameboardBodies = document.querySelectorAll('.gameBoardBody')
-import {gameInitialization, gameLogic, computer, player, turn} from "./gameLoop"
+import {gameInitialization, computer, player, turn} from "./ship-placement.js"
+import { gameLogic } from "./game-logic"
 
 function generateGrid() {
 // First create 10 rows
@@ -40,14 +41,13 @@ function generateGrid() {
 generateGrid()
 
 function displayGridShots(){
-    const tdList = document.querySelectorAll('td')
+    const tdList = document.querySelectorAll('.gameboardTwoRows td')
     tdList.forEach( td => {
         td.addEventListener('click', ()=>{
             // console.log(`${td.dataset.x} X`)
             // console.log(`${td.parentElement.dataset.y} Y`)
             // console.log(`${td.dataset.owner}`)
             gameLogic(computer, player)
-            console.log(turn)
             if(td.dataset.owner == 'Computer'){
                 const x = Number(td.dataset.x)
                 const y = Number(td.parentElement.dataset.y)
