@@ -1,20 +1,23 @@
-import { Ship } from "./ships"
+import { Ship } from "./ships";
 
+function shipGeneration() {
+  const shipCollection = [];
 
-function shipGeneration(){
+  const smallestShip = Ship(2, "Smallest Ship");
+  const smallShip = Ship(3, "Small Ship");
+  const smallShipTwo = Ship(3, "Small Ship");
+  const mediumShip = Ship(4, "Medium Ship");
+  const largeShip = Ship(5, "Large Ship");
 
-    const shipCollection = []
+  shipCollection.push(
+    smallestShip,
+    smallShip,
+    smallShipTwo,
+    mediumShip,
+    largeShip
+  );
 
-    const smallestShip = Ship(2,'Smallest Ship')
-    const smallShip    = Ship(3,'Small Ship')
-    const smallShipTwo = Ship(3,'Small Ship')
-    const mediumShip   = Ship(4,'Medium Ship')
-    const largeShip    = Ship(5,'Large Ship')
-
-    shipCollection.push(smallestShip,smallShip,smallShipTwo,mediumShip,largeShip)
-
-    return shipCollection
-
+  return shipCollection;
 }
 
-export {shipGeneration }
+export { shipGeneration };

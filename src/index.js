@@ -1,6 +1,7 @@
+import "./style.css";
+import { generateGrid, displayGridShots } from "./gameUI";
+import { gameInitialization } from "./ship-placement";
 
-import './style.css';
-import {generateGrid } from './gameUI'
-import { Ship } from "./ships";
-import {computer, player} from "./ship-placement"
-
+generateGrid();
+displayGridShots();
+gameInitialization();
